@@ -44,6 +44,7 @@ cd WaterWays-Java-Spring-Boot-Project-DBMS
 
 6. **Run the Application:**
    - Run the `WaterwaysApplication.java` file to start the application.
+   - Server is Running on [http://localhost:8080/](http://localhost:8080/).
 
 ## Docker Setup
 
@@ -52,6 +53,7 @@ cd WaterWays-Java-Spring-Boot-Project-DBMS
    ```
    docker-compose up
    ```
+   - Server is Running on [http://localhost:8080/](http://localhost:8080/).
 
 ## Additional Details
 

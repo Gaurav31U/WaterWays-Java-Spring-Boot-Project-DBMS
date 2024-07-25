@@ -1,17 +1,15 @@
-drop database if exists waterways;
-
-create database waterways;
+create database if not exists waterways;
 
 USE waterways;
 
-create table ShipModel (
+create table if not exists ShipModel (
 	ModelId int primary key auto_increment,
 	RoomCount int not null,
 	ModelName varchar(30)
 );
 
 
-create table Ship (
+create table if not exists Ship (
 	ShipSerialId int primary key auto_increment,
 	ModelId int not null,
 	ShipStatusCode int not null,
@@ -20,7 +18,7 @@ create table Ship (
 );
 
 
-create table Users (
+create table if not exists Users (
 	UserId int primary key auto_increment,
 	UserName varchar(50) not null,
 	EmailId	varchar(50) unique,
@@ -28,7 +26,7 @@ create table Users (
 );
 
 
-create table Employee (
+create table if not exists Employee (
 	EmployeeId int primary key auto_increment,
 	UserId int not null,
 	JoinDate datetime not null,
@@ -37,7 +35,7 @@ create table Employee (
 );
 
 
-create table Harbor (
+create table if not exists Harbor (
 	HarborId int primary key auto_increment,
 	Location varchar(20) not null,
 	ConstructionDate datetime not null,
@@ -47,7 +45,7 @@ create table Harbor (
 );
 
 
-create table Voyage (
+create table if not exists Voyage (
 	VoyageId int primary key auto_increment,
 	ShipSerialId int not null,
 	Fare int not null,
@@ -62,7 +60,7 @@ create table Voyage (
 );
 
 
-create table Crew (
+create table if not exists Crew (
     EmployeeId int not null,
     VoyageId int not null,
     CrewRole varchar(50),
@@ -73,7 +71,7 @@ create table Crew (
 );
 
 
-create table Transaction (
+create table if not exists Transaction (
     TransactionId int primary key auto_increment,
     TransactionDate datetime not null,
     Amount int not null,
@@ -82,7 +80,7 @@ create table Transaction (
 );
 
 
-create table RoomBooking (
+create table if not exists RoomBooking (
     TransactionId int,
     RoomId int,
     VoyageId int,
@@ -94,7 +92,7 @@ create table RoomBooking (
 );
 
 
-create table FoodItem (
+create table if not exists FoodItem (
     FoodItemId int,
     VoyageId int,
     FoodCost int not null,
@@ -106,7 +104,7 @@ create table FoodItem (
 );
 
 
-create table FoodBooking (
+create table if not exists FoodBooking (
     TransactionId int primary key,
     FoodItemId int,
     VoyageId int,
@@ -118,12 +116,6 @@ create table FoodBooking (
     -- Weak Entity FoodBooking
 );
 
-source Views.sql;
-source CrewInsertTrigger.sql;
-source VoyageInsertTrigger.sql;
-source VoyageUpdateTrigger.sql;
-source FoodItemDeleteTrigger.sql;
-source data.sql;
 
 
 
