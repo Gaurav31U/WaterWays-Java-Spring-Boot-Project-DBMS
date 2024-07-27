@@ -1,0 +1,10 @@
+FROM redis:7.0
+
+# Expose port 6379 to allow connections from outside the container
+EXPOSE 6379
+
+# Copy the custom Redis configuration file into the container
+COPY redis.conf /usr/local/etc/redis/redis.conf
+
+# Start Redis with the custom configuration file
+CMD ["redis-server", "/usr/local/etc/redis/redis.conf"]

@@ -25,5 +25,31 @@ services:
     depends_on:
       - mysql
 
+  prometheus:
+    build:
+      context: ./prometheus
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+      
+  redis:
+    build:
+      context: ./redis
+      dockerfile: Dockerfile
+    ports:
+      - "6379:6379"
+
+  grafana:
+    image: grafana/grafana-oss
+    ports:
+      - "3000:3000"
+    container_name: grafana
+  
+  loki:
+    image: grafana/loki
+    ports:
+      - "3100:3100"
+    container_name: loki
+
 volumes:
   mysql_data:

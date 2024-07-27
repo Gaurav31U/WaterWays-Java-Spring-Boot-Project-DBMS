@@ -1,0 +1,10 @@
+FROM prom/prometheus
+
+COPY prometheus.yml /etc/prometheus/prometheus.yml
+
+EXPOSE 9090
+
+CMD ["--config.file=/etc/prometheus/prometheus.yml"]
+
+# docker run -d -p 3000:3000 --name=grafana grafana/grafana-oss
+# docker run -d --name=loki -p 3100:3100 grafana/loki
