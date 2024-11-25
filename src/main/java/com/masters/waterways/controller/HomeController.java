@@ -62,6 +62,7 @@ public class HomeController {
 
 	@PostMapping("/signup")
 	public String signedup(@ModelAttribute("newUser") Users newUser) {
+		// Authorisation and validation should implement here in future.
 		usersDao.insert(newUser);
 		return "redirect:/login";
 	}
@@ -124,7 +125,6 @@ public class HomeController {
 
 //		List<Voyage> voyage = new ArrayList<>();
 //		voyage.add(voyageDao.getById(voyageId));
-
 //		List<VoyageVerbose> voyageVerbose = voyageVerboseTransform.transform(voyage);
 
 		VoyageUserView voyage = voyageUserViewDao.getById(voyageId);

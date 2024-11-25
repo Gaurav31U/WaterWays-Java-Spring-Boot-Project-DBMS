@@ -73,6 +73,7 @@ public class FoodBookingDaoImpl implements FoodBookingDao {
 		);
 
 		if (foodCost != null) {
+			// REAL TRANSACTION FUNCTION IS TO BE IMPLEMENT USING THE API CALLS AND BELOW CHANGE SHOULD BE ATOMIC W.R.T. TO TRANSACTION
 			jdbctemplate.update(
 					"INSERT INTO Transaction (TransactionDate, Amount, UserId) VALUES (NOW(), ?, ?)",
 					foodBooking.getFoodItemCount() * foodCost, userId

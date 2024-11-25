@@ -96,8 +96,6 @@ public class UserController {
             return"redirect:/login";
         }
 
-//        int userId=session_key;
-
         roomBookingDao.bookRoomByVoyageIdAndUserId(voyageId, authenticationService.getCurrentUser(session));
         return "redirect:/voyages/{id}";
     }
@@ -108,11 +106,10 @@ public class UserController {
         if (!authenticationService.isAuthenticated(session)) {
             return"redirect:/login";
         }
-//        int userId=session_key;
 
         model.addAttribute("my_completed_voyages", voyageUserViewDao.getAllCompletedByUserId(authenticationService.getCurrentUser(session)));
         model.addAttribute("my_upcoming_voyages", voyageUserViewDao.getAllFutureByUserId(authenticationService.getCurrentUser(session)));
-        return "MyVoyageList"; // will direct to VoyageDetailsUser
+        return "MyVoyageList";
     }
 
     @GetMapping("/user/voyage/{voyageId}/room/{roomId}")
